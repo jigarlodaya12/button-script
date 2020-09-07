@@ -608,8 +608,10 @@ var IM = function() {
 
 
     setTimeout(() => { 
-            var elmnt = MyIFrame.contentWindow.document.getElementsByClassName("social-login-wrap");
-            elmnt[0].style.display = "none";
+      var MyIFrame = document.getElementById("myIframe");
+      var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
+      var elmnt = MyIFrameDoc.getElementsByClassName("login-mobile-wrapper");
+      elmnt[0].style.display = "none";
      }, 5000);
 
     // document.body.appendChild(div);
