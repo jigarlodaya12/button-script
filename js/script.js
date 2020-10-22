@@ -379,6 +379,10 @@ var IM = function() {
     });
   }
 
+  function testOnload() {
+    console.log("herer");
+  }
+
   function fetchProductDetails(params) {
     var bab = this;
     var defaultParams = {
@@ -593,10 +597,6 @@ var IM = function() {
       'source': 'web',
       'user_domain': clientData.domain
     };
-
-    function testOnload() {
-      console.log("herer");
-    }
 
     var MyIFrame = document.getElementById("myIframe");
     var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
