@@ -379,6 +379,10 @@ var IM = function() {
     });
   }
 
+  function imojoPaymentPage() {
+    console.log(document.getElementById("myIframe").src);
+  }
+
   function fetchProductDetails(params) {
     var bab = this;
     var defaultParams = {
@@ -394,7 +398,7 @@ var IM = function() {
         'X-Requested-With': 'XMLHttpRequest'
       }
     }).then(function(data, status) {
-      var iframeHtml = Mustache.to_html('<div id="iframe-bg"><iframe id="myIframe" height="100%" width="100%" onLoad="alert(\'Test\');"></iframe><span onclick="IM.hideIframe()" class="close"></span><div class="pace-loading"></div></div>');
+      var iframeHtml = Mustache.to_html('<div id="iframe-bg"><iframe id="myIframe" height="100%" width="100%" onLoad="imojoPaymentPage();"></iframe><span onclick="IM.hideIframe()" class="close"></span><div class="pace-loading"></div></div>');
       var html = Mustache.to_html(BABModal);
       var div = document.createElement('div');
       div.innerHTML = iframeHtml + html;
