@@ -594,10 +594,12 @@ var IM = function() {
       'user_domain': clientData.domain
     };
 
+    function testOnload() {
+      console.log("herer");
+    }
+
     var MyIFrame = document.getElementById("myIframe");
-    if(MyIFrame) MyIFrame.setAttribute("onload", function test() {
-      console.log('erer');
-    });
+    if(MyIFrame) MyIFrame.setAttribute("onload", testOnload);
     var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
 
    // var doc = MyIFrame.contentDocument;
