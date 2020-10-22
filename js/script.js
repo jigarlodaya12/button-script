@@ -434,10 +434,6 @@ var IM = function() {
       var html = Mustache.to_html(BABModal);
       var div = document.createElement('div');
       div.innerHTML = iframeHtml + html;
-      // Usage:
-      iframeURLChange(document.getElementById("myIframe"), function (newURL) {
-        console.log("URL changed:", newURL);
-      });
       document.body.appendChild(div);
       document.getElementById('bab_cart_overlay').style.display = 'block';
       document.getElementById('bab_cart').style.right = '0';
@@ -636,6 +632,11 @@ var IM = function() {
 
     var MyIFrame = document.getElementById("myIframe");
     var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
+
+    // Usage:
+    iframeURLChange(MyIFrame, function (newURL) {
+      console.log("URL changed:", newURL);
+    });
 
    // var doc = MyIFrame.contentDocument;
    // doc.head.innerHTML = doc.head.innerHTML + '<style>.social-login-wrap{display:none;}</style>';
