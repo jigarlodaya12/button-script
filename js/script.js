@@ -1237,7 +1237,6 @@ var IM = function() {
     decreaseQuantity: decreaseQuantity,
     onCheckout: onCheckout,
     fetchProductDetails: fetchProductDetails,
-    testOnload: testOnload,
     renderUI: renderUI,
     render: render,
     checkPWYW: checkPWYW,
