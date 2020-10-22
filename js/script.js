@@ -400,8 +400,9 @@ var IM = function() {
     function attachUnload() {
         // Remove the unloadHandler in case it was already attached.
         // Otherwise, there will be two handlers, which is unnecessary.
-        iframe.contentWindow.removeEventListener("unload", unloadHandler);
-        iframe.contentWindow.addEventListener("unload", unloadHandler);
+        var iframeContent = iframe.contentWindow || iframe.contentDocument
+        iframeContent.removeEventListener("unload", unloadHandler);
+        iframeContent.addEventListener("unload", unloadHandler);
     }
 
     iframe.addEventListener("load", function () {
