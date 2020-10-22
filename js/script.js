@@ -379,9 +379,10 @@ var IM = function() {
     });
   }
 
-  document.getElementById("myIframe").on('load', function (){
+  document.getElementById("myIframe").onload = function () {
     console.log(this)
-  });
+    console.log(document.getElementById("myIframe").src);
+  }
 
   function fetchProductDetails(params) {
     var bab = this;
