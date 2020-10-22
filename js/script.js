@@ -379,9 +379,14 @@ var IM = function() {
     });
   }
 
-  document.getElementById("myIframe").onload = function () {
-    console.log(this)
-    console.log(document.getElementById("myIframe").src);
+  if(document.getElementById("myIframe")){
+    document.getElementById("myIframe").onload = function () {
+      console.log(this)
+      console.log(document.getElementById("myIframe").src);
+    }
+  }
+  function testOnload() {
+    console.log('erer');
   }
 
   function fetchProductDetails(params) {
@@ -403,6 +408,7 @@ var IM = function() {
       var html = Mustache.to_html(BABModal);
       var div = document.createElement('div');
       div.innerHTML = iframeHtml + html;
+      document.getElementById("#myIframe").setAttribute("onload", testOnload);
       document.body.appendChild(div);
       document.getElementById('bab_cart_overlay').style.display = 'block';
       document.getElementById('bab_cart').style.right = '0';
