@@ -595,7 +595,7 @@ var IM = function() {
     };
 
     var MyIFrame = document.getElementById("myIframe");
-    if(MyIFrame) MyIFrame.setAttribute("onload", function() {
+    if(MyIFrame) MyIFrame.setAttribute("onload", function test() {
       console.log('erer');
     });
     var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
