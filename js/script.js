@@ -630,6 +630,8 @@ var IM = function() {
     };
 
     var MyIFrame = document.getElementById("myIframe");
+    console.log(MyIFrame.contentWindow);
+    console.log(MyIFrame.contentDocument);
     var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
 
 
