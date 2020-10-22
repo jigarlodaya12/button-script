@@ -379,9 +379,9 @@ var IM = function() {
     });
   }
 
-  function imojoPaymentPage() {
-    console.log(document.getElementById("myIframe").src);
-  }
+  document.getElementById("myIframe").on('load', function (){
+    console.log(this)
+  });
 
   function fetchProductDetails(params) {
     var bab = this;
