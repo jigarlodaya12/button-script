@@ -394,7 +394,7 @@ var IM = function() {
         'X-Requested-With': 'XMLHttpRequest'
       }
     }).then(function(data, status) {
-      var iframeHtml = Mustache.to_html('<div id="iframe-bg"><iframe id="myIframe" height="100%" width="100%"></iframe><span onclick="IM.hideIframe()" class="close"></span><div class="pace-loading"></div></div>');
+      var iframeHtml = Mustache.to_html('<div id="iframe-bg"><iframe id="myIframe" height="100%" width="100%" onload="testOnload()"></iframe><span onclick="IM.hideIframe()" class="close"></span><div class="pace-loading"></div></div>');
       var html = Mustache.to_html(BABModal);
       var div = document.createElement('div');
       div.innerHTML = iframeHtml + html;
@@ -599,7 +599,6 @@ var IM = function() {
     }
 
     var MyIFrame = document.getElementById("myIframe");
-    if(MyIFrame) MyIFrame.setAttribute("onload", testOnload());
     var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
 
    // var doc = MyIFrame.contentDocument;
