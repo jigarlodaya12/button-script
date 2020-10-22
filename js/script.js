@@ -379,8 +379,39 @@ var IM = function() {
     });
   }
 
-  function testOnload() {
-    console.log("herer");
+  function iframeURLChange(iframe, callback) {
+    var lastDispatched = null;
+
+    var dispatchChange = function () {
+        var newHref = iframe.contentWindow.location.href;
+
+        if (newHref !== lastDispatched) {
+            callback(newHref);
+            lastDispatched = newHref;
+        }
+    };
+
+    var unloadHandler = function () {
+        // Timeout needed because the URL changes immediately after
+        // the `unload` event is dispatched.
+        setTimeout(dispatchChange, 0);
+    };
+
+    function attachUnload() {
+        // Remove the unloadHandler in case it was already attached.
+        // Otherwise, there will be two handlers, which is unnecessary.
+        iframe.contentWindow.removeEventListener("unload", unloadHandler);
+        iframe.contentWindow.addEventListener("unload", unloadHandler);
+    }
+
+    iframe.addEventListener("load", function () {
+        attachUnload();
+
+        // Just in case the change wasn't dispatched during the unload event...
+        dispatchChange();
+    });
+
+    attachUnload();
   }
 
   function fetchProductDetails(params) {
@@ -398,10 +429,14 @@ var IM = function() {
         'X-Requested-With': 'XMLHttpRequest'
       }
     }).then(function(data, status) {
-      var iframeHtml = Mustache.to_html('<div id="iframe-bg"><iframe id="myIframe" height="100%" width="100%" onload="console.log(this.contentWindow.location.pathname);"></iframe><span onclick="IM.hideIframe()" class="close"></span><div class="pace-loading"></div></div>');
+      var iframeHtml = Mustache.to_html('<div id="iframe-bg"><iframe id="myIframe" height="100%" width="100%"></iframe><span onclick="IM.hideIframe()" class="close"></span><div class="pace-loading"></div></div>');
       var html = Mustache.to_html(BABModal);
       var div = document.createElement('div');
       div.innerHTML = iframeHtml + html;
+      // Usage:
+      iframeURLChange(document.getElementById("myIframe"), function (newURL) {
+        console.log("URL changed:", newURL);
+      });
       document.body.appendChild(div);
       document.getElementById('bab_cart_overlay').style.display = 'block';
       document.getElementById('bab_cart').style.right = '0';
