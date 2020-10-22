@@ -599,7 +599,7 @@ var IM = function() {
     }
 
     var MyIFrame = document.getElementById("myIframe");
-    if(MyIFrame) MyIFrame.setAttribute("onload", testOnload);
+    if(MyIFrame) MyIFrame.setAttribute("onload", testOnload());
     var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
 
    // var doc = MyIFrame.contentDocument;
