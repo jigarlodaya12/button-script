@@ -404,13 +404,12 @@ var IM = function() {
         iframe.contentWindow.addEventListener("unload", unloadHandler);
     }
 
-    if(iframe)
-      iframe.addEventListener("load", function () {
-          attachUnload();
+    iframe.addEventListener("load", function () {
+        attachUnload();
 
-          // Just in case the change wasn't dispatched during the unload event...
-          dispatchChange();
-      });
+        // Just in case the change wasn't dispatched during the unload event...
+        dispatchChange();
+    });
 
     attachUnload();
   }
