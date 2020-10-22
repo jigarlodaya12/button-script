@@ -632,10 +632,6 @@ var IM = function() {
     var MyIFrame = document.getElementById("myIframe");
     var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
 
-    // Usage:
-    iframeURLChange(MyIFrame, function (newURL) {
-      console.log("URL changed:", newURL);
-    });
 
    // var doc = MyIFrame.contentDocument;
    // doc.head.innerHTML = doc.head.innerHTML + '<style>.social-login-wrap{display:none;}</style>';
@@ -649,6 +645,10 @@ var IM = function() {
 
     setTimeout(() => { 
       var MyIFrame = document.getElementById("myIframe");
+      // Usage:
+      iframeURLChange(MyIFrame, function (newURL) {
+        console.log("URL changed:", newURL);
+      });
       var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
       var elmnt = MyIFrameDoc.getElementsByClassName("login-mobile-wrapper");
       elmnt[0].style.display = "none";
