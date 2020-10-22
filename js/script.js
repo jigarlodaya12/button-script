@@ -379,16 +379,6 @@ var IM = function() {
     });
   }
 
-  if(document.getElementById("myIframe")){
-    document.getElementById("myIframe").onload = function () {
-      console.log(this)
-      console.log(document.getElementById("myIframe").src);
-    }
-  }
-  function testOnload() {
-    console.log('erer');
-  }
-
   function fetchProductDetails(params) {
     var bab = this;
     var defaultParams = {
@@ -605,7 +595,9 @@ var IM = function() {
     };
 
     var MyIFrame = document.getElementById("myIframe");
-    if(MyIFrame) MyIFrame.setAttribute("onload", testOnload);
+    if(MyIFrame) MyIFrame.setAttribute("onload", function() {
+      console.log('erer');
+    });
     var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
 
    // var doc = MyIFrame.contentDocument;
