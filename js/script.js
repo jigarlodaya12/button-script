@@ -990,7 +990,7 @@ var IM = function() {
     } else {
       createCheckoutForm(activeProduct);
       var MyIFrame = document.getElementById("myIframe");
-      document.getElementById('#gmas_footer').style.display = 'none'
+      // document.getElementById('#gmas_footer').style.display = 'none'
       var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
       if (MyIFrameDoc.document) MyIFrameDoc = MyIFrameDoc.document;
       MyIFrameDoc.getElementById("bab-checkout-form").submit();
