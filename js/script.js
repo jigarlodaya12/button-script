@@ -969,7 +969,6 @@ var IM = function() {
                     classNames[i].required = true;  
                   }
             }
-            IM.hideCart();
         }
     }
 
