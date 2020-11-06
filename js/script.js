@@ -608,12 +608,12 @@ var IM = function() {
     MyIFrameDoc.write(html);
 
 
-    setTimeout(() => { 
-      var MyIFrame = document.getElementById("myIframe");
-      var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
-      var elmnt = MyIFrameDoc.getElementsByClassName("login-mobile-wrapper");
-      elmnt[0].style.display = "none";
-     }, 5000);
+    // setTimeout(() => { 
+    //   var MyIFrame = document.getElementById("myIframe");
+    //   var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
+    //   var elmnt = MyIFrameDoc.getElementsByClassName("login-mobile-wrapper");
+    //   elmnt[0].style.display = "none";
+    //  }, 5000);
 
     // document.body.appendChild(div);
   }
