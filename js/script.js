@@ -652,13 +652,14 @@ var IM = function() {
     div.innerHTML = html;
     document.getElementById('bab_product_content').appendChild(div);
     var aSlider = new Slider("#bab-slider");
-    fetchCountryList();
+    // fetchCountryList();
     if (productData.pwyw) {
       createPayWhatYouWant();
     }
     if (allProductsData.length > 1) {
       createOptionsData(productData);
     }
+    createProductOptionWidget({ product_options: productOptionData });
     if (productData.s > 0) {
       document.querySelector('.bab-buy-now-btn').disabled = false;
       document.querySelector('.bab-buy-now-btn').innerHTML = 'Buy Now';
@@ -733,8 +734,8 @@ var IM = function() {
       var optv2 = document.getElementById('optv2').value;
       var optv3 = document.getElementById('optv3').value;
     }
-    var elem = document.getElementById('bab_product_content');
-    elem.innerHTML = '';
+    // var elem = document.getElementById('bab_product_content');
+    // elem.innerHTML = '';
     var combo = [optv1, optv2, optv3].filter(function(val) {
       return val;
     }).join('|');
@@ -1173,7 +1174,7 @@ var IM = function() {
 
   function render() {
     function processButtons() {
-      Array.prototype.slice.call(document.querySelectorAll('a[rel="im-checkout"]')).forEach(checkoutLink => {
+      Array.prototype.slice.call(document.querySelectorAll('a[rel="im-new-checkout"]')).forEach(checkoutLink => {
         getPayButtonCard(checkoutLink, getButtonData(checkoutLink));
         loadStylesheet();
       });
