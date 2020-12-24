@@ -58,7 +58,7 @@ var IM = function() {
     ' </div>' +
     '<a class="bab-prod-title" href="{{user_domain}}/product/{{id}}/{{slug}}" target="_blank">' +
     '<h3>{{t}}</h3></a>' +
-    ' {{sd}}' +
+    ' <div class="bab-short-description">{{{sd}}}</div>' +
     '<div class="bab-item-detail-block">' +
     ' <div class="bab-price-label">' +
     '   {{#dp}}' +
