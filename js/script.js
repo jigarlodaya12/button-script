@@ -586,13 +586,18 @@ var IM = function() {
         itemData.option3_value = productData.optv3;
       }
     };
+    var getNewUserDomain =- function(domain) {
+      if (domain.includes('stores.instamojo.com')) {
+        return domain.replace(/stores.instamojo.com/g, 'myinstamojo.com');
+      }
+    }
     var checkoutData = {
       'total_items': productData.quantity,
       'total_price': itemData.final_price * productData.quantity,
       'item': JSON.stringify(itemData),
       'user_name': clientData.store_name,
       'source': 'web',
-      'user_domain': "//" + clientData.store_name + ".myinstamojo.com"
+      'user_domain': getNewUserDomain(clientData.domain)
     };
 
     var MyIFrame = document.getElementById("myIframe");
