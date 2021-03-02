@@ -592,7 +592,7 @@ var IM = function() {
       'item': JSON.stringify(itemData),
       'user_name': clientData.store_name,
       'source': 'web',
-      'user_domain': clientData.store_name + ".myinstamojo.com"
+      'user_domain': "//" + clientData.store_name + ".myinstamojo.com"
     };
 
     var MyIFrame = document.getElementById("myIframe");
