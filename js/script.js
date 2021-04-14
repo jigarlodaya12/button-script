@@ -348,6 +348,7 @@ var IM = function() {
       'limit': 1,
       'fields': product_listing_keys
     };
+    console.log("fetch products ", resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api);
     request({
       url: [resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api, clientData.store_name, 'api/v4/product/'].join('/'),
       params: BABextend(defaultParams, params),
