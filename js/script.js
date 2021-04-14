@@ -348,7 +348,6 @@ var IM = function() {
       'limit': 1,
       'fields': product_listing_keys
     };
-    console.log("fetch products ", resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api);
     request({
       url: [resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api, clientData.store_name, 'api/v4/product/'].join('/'),
       params: BABextend(defaultParams, params),
@@ -386,7 +385,6 @@ var IM = function() {
       'limit': 500,
       'fields': product_listing_keys
     };
-    console.log("fetch product details ", clientData)
     request({
       url: [resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api, clientData.store_name, 'api/v4/product/'].join('/'),
       params: BABextend(defaultParams, params),
@@ -1001,7 +999,6 @@ var IM = function() {
   }
 
   function getPayButtonCard(element, checkoutButtonData) {
-    console.log("checkoutButtonData ", checkoutButtonData)
     const randomId = Math.floor(Math.random() * 100 + 1);
 
     const imageDiv = convertUrlToImage(randomId, checkoutButtonData['imageUrl']);
@@ -1111,7 +1108,6 @@ var IM = function() {
       env: element.hasAttribute('data-env') ? element.getAttribute('data-env') : 'production',
       api: element.hasAttribute('data-api') ? element.getAttribute('data-api') : ''
     };
-    console.log(clientData.api)
     return {product_id: element.getAttribute('data-id'),
       domain: element.getAttribute('data-domain'),
       store_name: element.getAttribute('data-store-name'),
