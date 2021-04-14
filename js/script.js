@@ -12,8 +12,6 @@ var IM = function() {
   var currency = 'INR';
   var resources = {
     inventory: {
-      'staging': 'https://api.stores.mjc.instamojo.com',
-      'staging0': 'https://api.stores.mjc0.instamojo.com',
       'production': 'https://api.stores.instamojo.com',
     }
   };
@@ -351,7 +349,7 @@ var IM = function() {
       'fields': product_listing_keys
     };
     request({
-      url: [resources.inventory[clientData.env], clientData.store_name, 'api/v4/product/'].join('/'),
+      url: [resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api, clientData.store_name, 'api/v4/product/'].join('/'),
       params: BABextend(defaultParams, params),
       header: {
         'Content-Type': 'application/json',
@@ -367,7 +365,7 @@ var IM = function() {
       'fields': product_option_keys
     };
     request({
-      url: [resources.inventory[clientData.env], clientData.store_name, 'api/v4/product-option/'].join('/'),
+      url: [resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api, clientData.store_name, 'api/v4/product-option/'].join('/'),
       params: BABextend(defaultParams, { p: product_id }),
       header: {
         'Content-Type': 'application/json',
@@ -388,7 +386,7 @@ var IM = function() {
       'fields': product_listing_keys
     };
     request({
-      url: [resources.inventory[clientData.env], clientData.store_name, 'api/v4/product/'].join('/'),
+      url: [resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api, clientData.store_name, 'api/v4/product/'].join('/'),
       params: BABextend(defaultParams, params),
       header: {
         'Content-Type': 'application/json',
@@ -586,18 +584,13 @@ var IM = function() {
         itemData.option3_value = productData.optv3;
       }
     };
-    var getNewUserDomain =- function(domain) {
-      if (domain.includes('stores.instamojo.com')) {
-        return domain.replace(/stores.instamojo.com/g, 'myinstamojo.com');
-      }
-    }
     var checkoutData = {
       'total_items': productData.quantity,
       'total_price': itemData.final_price * productData.quantity,
       'item': JSON.stringify(itemData),
       'user_name': clientData.store_name,
       'source': 'web',
-      'user_domain': getNewUserDomain(clientData.domain)
+      'user_domain': clientData.domain
     };
 
     var MyIFrame = document.getElementById("myIframe");
@@ -827,7 +820,7 @@ var IM = function() {
       productIds: product_ids
     };
     request({
-      url: [resources.inventory[clientData.env], clientData.store_name, 'dapi/v1/shipping/check-delivery/'].join('/'),
+      url: [resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api, clientData.store_name, 'dapi/v1/shipping/check-delivery/'].join('/'),
       params: params,
       header: {
         'Content-Type': 'application/json',
@@ -1067,6 +1060,7 @@ var IM = function() {
       domain: checkoutButtonData['domain'],
       store_name: checkoutButtonData['store_name'],
       env: checkoutButtonData['env'],
+      api: checkoutButtonData['api']
     }
     let changeString = `<div class=${"bab_product_container_" + checkoutButtonData.product_id}><div class="im-new-checkout btn-${randomId} bab-product-item-img ">
       <a href="javascript:void(0)" class="bab-button im-new-checkout-btn btn--default" onClick=IM.showCart(` + JSON.stringify(cData) + `);>`;
@@ -1111,8 +1105,10 @@ var IM = function() {
       product_id: element.getAttribute('data-id'),
       domain: element.getAttribute('data-domain'),
       store_name: element.getAttribute('data-store-name'),
-      env: element.hasAttribute('data-env') ? element.getAttribute('data-env') : 'production'
+      env: element.hasAttribute('data-env') ? element.getAttribute('data-env') : 'production',
+      api: element.hasAttribute('data-api') ? element.getAttribute('data-api') : ''
     };
+    console.log(clientData.api)
     return {product_id: element.getAttribute('data-id'),
       domain: element.getAttribute('data-domain'),
       store_name: element.getAttribute('data-store-name'),
