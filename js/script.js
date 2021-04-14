@@ -1115,6 +1115,7 @@ var IM = function() {
       domain: element.getAttribute('data-domain'),
       store_name: element.getAttribute('data-store-name'),
       env: clientData.env ? clientData.env : 'staging',
+      api:clientData.api ? clientData.api : '',
       id: element.getAttribute('data-id'),
       behavior: element.getAttribute('data-behavior') || element.getAttribute('data-behaviour'), // due to a bug that has crept into our codebase
       link: element.href,
