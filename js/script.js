@@ -386,6 +386,7 @@ var IM = function() {
       'limit': 500,
       'fields': product_listing_keys
     };
+    console.log("fetch product details ", clientData.api)
     request({
       url: [resources.inventory[clientData.env] ? resources.inventory[clientData.env] : clientData.api, clientData.store_name, 'api/v4/product/'].join('/'),
       params: BABextend(defaultParams, params),
