@@ -1001,6 +1001,7 @@ var IM = function() {
   }
 
   function getPayButtonCard(element, checkoutButtonData) {
+    console.log("checkoutButtonData ", checkoutButtonData)
     const randomId = Math.floor(Math.random() * 100 + 1);
 
     const imageDiv = convertUrlToImage(randomId, checkoutButtonData['imageUrl']);
